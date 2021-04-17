@@ -14,12 +14,3 @@ Our solution is A hardware hack, that uses a raspberry pi camera to detect drows
 [Drowsey Driving Data](https://www.cdc.gov/sleep/about_sleep/drowsy_driving.html)
 
 ---
-Pitch 
-Spend time on the problem: 
-X percent of all accidents happen because mfs sleep
-Y percent happen in trucks, z percent in cars 
-
-our hack leverages AI to detect when drivers are feeling drowsy 
-
-Description- we use a web app to startup and connect, you get your pi and you can install it 
-
