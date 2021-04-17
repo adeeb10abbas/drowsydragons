@@ -10,6 +10,9 @@ Our solution is A hardware hack, that uses a raspberry pi camera to detect drows
 *Database: Postgres
 *Raspberry pi camera 
 
+## Scientific Resources
+[Drowsey Driving Data](https://www.cdc.gov/sleep/about_sleep/drowsy_driving.html)
+
 ---
 Pitch 
 Spend time on the problem: 
