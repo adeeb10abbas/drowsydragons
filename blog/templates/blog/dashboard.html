@@ -1,8 +1,12 @@
 {% extends "blog/base.html" %} {% block content %}
-<h2>All our shit comes here</h2>
-<ol>
-    <li>If not registered, spotify register button.</li>
-    <li>If registered, spotify controls here</li>
-    <li>some statistics. too sleepy to figure out which ones. As soon as they're figured out i can write them down here. </li>
-</ol>
+<h2>Spotify Preferences</h2>
+<br>
+
+<table class="center" style="width:100%">
+    <tr>
+        <td><iframe src="https://open.spotify.com/embed/playlist/27dPRRK82Odvqbw8eFfACA" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></td>
+        <td><a class="btn btn-info" href='{% url "spotify" %}'>I'm going for a drive.</a></td>
+    </tr>
+
+</table>
 {% endblock content %}
