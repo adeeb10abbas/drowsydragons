@@ -67,6 +67,7 @@ while sample_response["driving"] is True:
 				drowsy_data.append(str(datetime.now())
 				print(drowsy_data)
                                 ## Send another request here to change the music!!!
+			        requests.post("http://d91026e9f5f7.ngrok.io/dashboard/changesong")
 		else:
 			flag = 0
 	cv2.imshow("Frame", frame)
