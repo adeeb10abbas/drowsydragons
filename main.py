@@ -64,8 +64,8 @@ while sample_response["driving"] is True:
 				cv2.putText(frame, "****************ALERT!****************", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
 				cv2.putText(frame, "****************ALERT!****************", (10,325), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
 				print("Drowsy")
-				data.append(str(datetime.now()])
-				print(data)
+				drowsy_data.append(str(datetime.now())
+				print(drowsy_data)
                                 ## Send another request here to change the music!!!
 		else:
 			flag = 0
@@ -73,6 +73,5 @@ while sample_response["driving"] is True:
 	key = cv2.waitKey(1) & 0xFF
 	if key == ord("q"):
 		break
-print(data)
 cv2.destroyAllWindows()
 cap.stop()
