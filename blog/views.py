@@ -16,8 +16,9 @@ def driver_is_sleepy(request): #adeeb sends us shit here
 
     # try: 
     drowsy_user = Profile.objects.get(piId=input_data['piId']) #change this
-    drowsy_obj = Drowsy.objects.create(driver=drowsy_user) #drowsy log
-        #play_music(user_details)
+    print(drowsy_user.user.username)
+        
+    #play_music(drowsy_user.user.username with details)
     # except:
     #     print("This pi is not registered with us.")
  
