@@ -2,30 +2,30 @@ from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 
 from .models import Drowsy
+from users.models import Profile
 
 
 def landing(request):
-    return render(request, 'blog/grand-pro-opl/index.html')
+    return render(request, 'blog/index.html')
 
 
 def driver_is_sleepy(request): #adeeb sends us shit here 
     input_data = {
-        "piId": 1,
-        "speed": 2,
-        "location": 3, 
+        "piId": 806103,
     }
 
-    drowsy_user = User.objects.get(piId=input_data['piId'])
-    # drowsyUser = Drowsy.objects.create(
+    # try: 
+    drowsy_user = Profile.objects.get(piId=input_data['piId']) #change this
+    drowsy_obj = Drowsy.objects.create(driver=drowsy_user) #drowsy log
+        #play_music(user_details)
+    # except:
+    #     print("This pi is not registered with us.")
+ 
+    return HttpResponse("Music has been played for a user whow as drowsy while driving")
 
-    #         )
-    #call spotify API- turn the music on 
-    return HttpResponse("yo")
-
-#when user is logged in
 def dashboard(request):
     context = {
-        "name": "anna",
+        "name": "anna", #read from database
     }
     return render(request, 'blog/dashboard.html', context)
 
@@ -35,6 +35,7 @@ def register_spotify():
 def control_spotify():
     pass
 
-
 def about(request):
     return render(request, 'blog/about.html', {'title': 'About'})
+
+
