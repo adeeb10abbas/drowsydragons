@@ -1,7 +1,7 @@
 # drowsyai1
 DrowsyAI 
 
-How to set this up remotely: 
+How to set this up on your machine: 
 
 1. Create a folder locally and cd into it
 2. Create a virtual env folder using python3.8 -m venv env
