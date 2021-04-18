@@ -13,6 +13,10 @@ def homepage():
     <img src="http://loremflickr.com/600/400" />
     """.format(time=the_time)
 
+@app.route('test-endpoint')
+def test_point():
+    return '''<h1>This endpoint works.</h1>'''
+
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
 
