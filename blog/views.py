@@ -24,7 +24,10 @@ def driver_is_sleepy(request): #adeeb sends us shit here
 
 #when user is logged in
 def dashboard(request):
-    return render(request, 'blog/dashboard.html')
+    context = {
+        "name": "anna",
+    }
+    return render(request, 'blog/dashboard.html', context)
 
 def register_spotify():
     pass
