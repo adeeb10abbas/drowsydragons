@@ -7,4 +7,5 @@ urlpatterns = [
     path('about/', views.about, name='blog-about'),
     path('dashboard/spotify', views.register_spotify, name='spotify'),
     path('dashboard/confirmspotify', views.confirm_spotify, name='confirm-spotify'),
+    path('dashboard/changesong', views.control_spotify, name='change-song'),
 ]

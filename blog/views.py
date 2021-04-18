@@ -61,12 +61,6 @@ def confirm_spotify(request):
     code = str(request.GET['code'])
     messages.info(request, 'code: '+code)
 
-    #auth_str = 'Basic '+CLIENT_ID+":"+CLIENT_SECRET
-    
-    #headers = {
-    #    'Authorization': auth_str,
-    #}
-
     data = {
         'grant_type': 'authorization_code',
         'code': code,
@@ -79,8 +73,9 @@ def confirm_spotify(request):
 
     return render(request, 'blog/dashboard.html')
 
-def control_spotify():
-    pass
+def control_spotify(request):
+    messages.info(request, 'Received data from pi.')
+    return render(request, 'blog/dashboard.html')
 
 
 def about(request):
