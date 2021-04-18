@@ -4,6 +4,11 @@ import imutils
 import dlib
 import cv2
 from datetime import datetime
+import requests
+
+sample_response = {"driving": True}
+
+
 def eye_aspect_ratio(eye):
 	A = distance.euclidean(eye[1], eye[5])
 	B = distance.euclidean(eye[2], eye[4])
@@ -12,7 +17,7 @@ def eye_aspect_ratio(eye):
 	return ear
 	
 thresh = 0.25
-frame_check = 5
+frame_check = 20
 detect = dlib.get_frontal_face_detector()
 predict = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")# Dat file is the crux of the code
 
@@ -20,10 +25,18 @@ predict = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")# Dat fil
 (rStart, rEnd) = face_utils.FACIAL_LANDMARKS_68_IDXS["right_eye"]
 cap=cv2.VideoCapture(0)
 flag=0
-data = []
-while True:
+
+drowsy_data = []
+
+###### READ THESE COMMENTS########
+while sample_response["driving"] is True:
+
+	## get the request here to update the sample_response
+	# sample_response["driving"] = requests.GET() // should say FALSE when not driving 
+	if sample_response["driving"] is False:
+		pass
+		## requests.POST(drowsy_data)
 	ret, frame=cap.read()
-	# frame = imutils.resize(frame, width=450)
 	frame = cv2.resize(frame, (0,0), fx = 0.5, fy = 0.5)
 
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -51,10 +64,10 @@ while True:
 				cv2.putText(frame, "****************ALERT!****************", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
 				cv2.putText(frame, "****************ALERT!****************", (10,325), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
 				print("Drowsy")
-				data.append(["Drowsy",str(datetime.now())])
+				data.append(str(datetime.now()])
+				print(data)
 		else:
 			flag = 0
-		
 	cv2.imshow("Frame", frame)
 	key = cv2.waitKey(1) & 0xFF
 	if key == ord("q"):
