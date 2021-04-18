@@ -1,9 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib import messages
+from django.views.decorators.csrf import csrf_exempt
+import requests
 
 from .models import Drowsy
 
+access_token = ""
 
 def landing(request):
     return render(request, 'blog/grand-pro-opl/index.html')
@@ -52,7 +55,6 @@ def register_spotify(request):
     return render(request, 'blog/dashboard.html')
 
 def confirm_spotify(request):
-    import requests
     import base64
 
     CLIENT_ID = "fec22cf923c04b9eae0a62c19bfcd731"
@@ -73,8 +75,18 @@ def confirm_spotify(request):
 
     return render(request, 'blog/dashboard.html')
 
+@csrf_exempt
 def control_spotify(request):
     messages.info(request, 'Received data from pi.')
+    headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer '+access_token,
+    }
+    r= requests.get(url="https://api.spotify.com/v1/me/player/devices", headers=headers)
+
+    device_id = r.json()['devices'][0]['id']
+    r=requests.put(url="https://api.spotify.com/v1/me/player/play?device_id="+device_id, headers=headers, data = '{"context_uri":"spotify:playlist:27dPRRK82Odvqbw8eFfACA","offset":{"position":5},"position_ms":0}')
     return render(request, 'blog/dashboard.html')
 
 
